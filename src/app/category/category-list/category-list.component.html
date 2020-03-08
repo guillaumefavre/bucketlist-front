@@ -1,6 +1,8 @@
-<div>
-<h1>Liste de catégories :</h1>
-	<app-category-detail *ngFor="let category of categoryList" 
-		[categoryDetail]="category">
-	</app-category-detail>
+<div class="container">
+	<div class="col-xs-12">
+		<h1>Liste de catégories :</h1>
+			<app-category-detail *ngFor="let category of categoryList" 
+				[categoryDetail]="category">
+			</app-category-detail>
+	</div>
 </div>
