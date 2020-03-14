@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Category } from './model/category';
+import { CategoryService } from './services/category.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,14 @@ import { Category } from './model/category';
 export class AppComponent {
   title = 'bucketlist';
 
-  categories: Category[] = [
-    new Category(1, 'Sport'),
-    new Category(2, 'Voyage'),
-    new Category(3, 'Carrière')
-  ];
+  categories: Category[];
+
+  constructor(private categoryService: CategoryService) {
+
+  }
+
+  ngOnInit() {
+    this.categories = this.categoryService.categories;
+  }
+
 }
