@@ -12,6 +12,7 @@ export class CategoryService {
     new Category(1, 'Sport'),
     new Category(2, 'Voyage'),
     new Category(3, 'Carrière'),
-    new Category(4, 'Famille')
+    new Category(4, 'Famille'),
+    new Category(5, 'Apprentissage')
   ];
 }

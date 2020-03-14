@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from './model/category';
 import { CategoryService } from './services/category.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,11 @@ import { CategoryService } from './services/category.service';
 export class AppComponent {
   title = 'bucketlist';
 
-  categories: Category[];
-
-  constructor(private categoryService: CategoryService) {
-
+  constructor() {
   }
 
   ngOnInit() {
-    this.categories = this.categoryService.categories;
+
   }
 
 }
