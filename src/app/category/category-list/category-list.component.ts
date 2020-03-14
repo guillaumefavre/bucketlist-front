@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Category } from 'src/app/model/category';
 import { CategoryService } from 'src/app/services/category.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-category-list',
@@ -9,13 +10,25 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryListComponent implements OnInit {
 
-  //@Input()
   categoryList: Category[];
+
+  categorySubscription: Subscription;
 
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.categoryList = this.categoryService.categories;
+    console.log('CategoryListComponent ngOnInit()');
+
+    this.categorySubscription = this.categoryService.getCategories().subscribe(
+      categories => {
+        console.log('réponse categories : ' +categories);
+        this.categoryList = categories;
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.categorySubscription.unsubscribe();
   }
 
 }
