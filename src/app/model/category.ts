@@ -3,8 +3,8 @@ export class Category {
     id: number;
     label: string;
 
-    constructor(id: number, label: string) {
-        this.id = id;
+
+    constructor(label: string) {
         this.label = label;
     }
 }

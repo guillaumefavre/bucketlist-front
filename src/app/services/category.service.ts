@@ -29,6 +29,13 @@ export class CategoryService {
     );
   }
 
+  createCategory(category: Category): Observable<Category> {
+    console.log('createCategory : '+JSON.stringify(category));
+    return this.httpClient.post<Category>(this.categoryUrl, category).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(err: HttpErrorResponse) {
     console.log('handleError');
     // in a real world app, we may send the server to some remote logging infrastructure
