@@ -11,6 +11,9 @@ export class CategoryService {
 
   private categoryUrl = 'http://localhost:8090/category';
 
+  categories: Category[] = [];
+  categorySubject = new Subject<Category[]>();
+
   constructor(private httpClient: HttpClient) { }
 
   // categories: Category[] = [
@@ -24,7 +27,11 @@ export class CategoryService {
   getCategories(): Observable<Category[]> {
     console.log('getCategories');
     return this.httpClient.get<Category[]>(this.categoryUrl).pipe(
-      tap(data => console.log('Data : '+JSON.stringify(data))),
+      tap(data => {
+          console.log('Data : '+JSON.stringify(data));
+          this.categories = data;
+          this.emitCategories();
+        }),
       catchError(this.handleError)
     );
   }
@@ -32,8 +39,16 @@ export class CategoryService {
   createCategory(category: Category): Observable<Category> {
     console.log('createCategory : '+JSON.stringify(category));
     return this.httpClient.post<Category>(this.categoryUrl, category).pipe(
+      tap(data => {
+        this.categories.push(data);
+        this.emitCategories();
+      }),
       catchError(this.handleError)
     );
+  }
+
+  emitCategories() {
+    this.categorySubject.next(this.categories);
   }
 
   private handleError(err: HttpErrorResponse) {
