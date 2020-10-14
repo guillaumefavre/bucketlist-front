@@ -21,11 +21,13 @@ export class CategoryNewComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log(form.value);
     let newCategory = new Category(form.value.label);
-    this.categoryService.createCategory(newCategory).subscribe();
+    this.categorySubscription = this.categoryService.createCategory(newCategory).subscribe();
   }
 
   ngOnDestroy() {
-    this.categorySubscription.unsubscribe();
+    if(this.categorySubscription) {
+      this.categorySubscription.unsubscribe();
+    }
   }
 
 }

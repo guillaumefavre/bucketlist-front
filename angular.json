@@ -142,5 +142,8 @@
       }
     }
   },
-  "defaultProject": "bucketlist"
+  "defaultProject": "bucketlist",
+  "cli": {
+    "analytics": "76181e16-25ff-4ae2-8180-d0e670e077dc"
+  }
 }

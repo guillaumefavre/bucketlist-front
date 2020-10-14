@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
 import { CategoryNewComponent } from './category/category-new/category-new.component';
+import { BucketListComponent } from './bucket-list/bucket-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoryListComponent,
     CategoryDetailComponent,
-    CategoryNewComponent
+    CategoryNewComponent,
+    BucketListComponent
   ],
   imports: [
     BrowserModule,
