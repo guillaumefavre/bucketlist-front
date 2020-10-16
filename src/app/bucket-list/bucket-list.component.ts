@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ItemService } from '../services/item.service';
 
 @Component({
   selector: 'app-bucket-list',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BucketListComponent implements OnInit {
 
-  constructor() { }
+  itemSubscription: Subscription;
+
+  constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
+
+    this.itemSubscription = this.itemService.getItems().subscribe(
+      items => {
+        console.log('items : ', items)
+      }
+    );
   }
 
+  ngOnDestroy() {
+    this.itemSubscription.unsubscribe();
+  }
 }
