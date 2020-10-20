@@ -1,9 +1,8 @@
 <div class="container">
 	<div class="col-xs-12">
-        <app-item *ngFor="let item of itemsList" 
-            [item]="item">
-        </app-item>
-
-
+        <div *ngFor="let item of itemsList">
+            <h2 *ngIf="isNewCategory(item.category.id)">{{ item.category.label }}</h2>
+            <app-item [item]="item"></app-item>
+        </div>
 	</div>
 </div>

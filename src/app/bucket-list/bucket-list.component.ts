@@ -15,6 +15,8 @@ export class BucketListComponent implements OnInit {
 
   itemSubscription: Subscription;
 
+  lastCategoryId: number;
+
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
@@ -33,5 +35,18 @@ export class BucketListComponent implements OnInit {
 
   ngOnDestroy() {
     this.itemSubscription.unsubscribe();
+  }
+
+  /**
+   * Indique si l'item correspond à une 
+   * catégorie parcourue pour la première fois
+   * @param id 
+   */
+  isNewCategory(id) {
+    if(this.lastCategoryId != id) {
+      this.lastCategoryId = id;
+      return true;
+    }
+    return false;
   }
 }
