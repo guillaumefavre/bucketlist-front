@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Category } from '../model/category';
 import { Item } from '../model/item';
 import { ItemService } from '../services/item.service';
 
@@ -21,7 +22,11 @@ export class BucketListComponent implements OnInit {
     this.itemSubscription = this.itemService.getItems().subscribe(
       items => {
         console.log('items : ', items)
-        this.itemsList = items;
+
+        this.itemsList = items.sort(function (a, b) {
+          return a.category.id - b.category.id;
+        });
+
       }
     );
   }
