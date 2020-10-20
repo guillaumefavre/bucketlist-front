@@ -1,1 +1,7 @@
-<p>bucket-list works!</p>
+<div class="container">
+	<div class="col-xs-12">
+        <app-item *ngFor="let item of itemsList" 
+            [item]="item">
+        </app-item>
+	</div>
+</div>

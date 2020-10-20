@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Item } from '../model/item';
 import { ItemService } from '../services/item.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { ItemService } from '../services/item.service';
   styleUrls: ['./bucket-list.component.scss']
 })
 export class BucketListComponent implements OnInit {
+
+  itemsList: Item[];
 
   itemSubscription: Subscription;
 
@@ -18,6 +21,7 @@ export class BucketListComponent implements OnInit {
     this.itemSubscription = this.itemService.getItems().subscribe(
       items => {
         console.log('items : ', items)
+        this.itemsList = items;
       }
     );
   }

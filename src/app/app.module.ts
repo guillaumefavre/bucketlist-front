@@ -9,6 +9,7 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
 import { CategoryNewComponent } from './category/category-new/category-new.component';
 import { BucketListComponent } from './bucket-list/bucket-list.component';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BucketListComponent } from './bucket-list/bucket-list.component';
     CategoryListComponent,
     CategoryDetailComponent,
     CategoryNewComponent,
-    BucketListComponent
+    BucketListComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
