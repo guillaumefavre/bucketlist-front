@@ -5,10 +5,12 @@ export class Item {
     id: number;
     label: string;
     status: string;
-    category: Category;
+    category: Item;
 
-    constructor(label: string, category: Category) {
+
+    constructor(label: string, category: Item, status: string) {
         this.label = label;
         this.category = category;
+        this.status = status
     }
 }

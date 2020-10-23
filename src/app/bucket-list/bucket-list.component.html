@@ -4,5 +4,8 @@
             <h2 *ngIf="isNewCategory(item.category.id)">{{ item.category.label }}</h2>
             <app-item [item]="item"></app-item>
         </div>
+        <div>
+            <app-item-new></app-item-new>
+        </div>
 	</div>
 </div>
