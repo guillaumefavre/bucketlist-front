@@ -39,8 +39,8 @@ export class ItemNewComponent implements OnInit {
 
   onSubmitForm() {
     const formValue = this.newItemForm.value;
-    // TODO : récupérer la catégorie complète dans categoryList, à partir de itemCategory
-    const newItem = new Item(formValue['itemLabel'], formValue['itemCategory'], formValue['itemStatus'])
+    const categoryNewItem = this.categoryList.find(categ => categ.id == formValue['itemCategory'])
+    const newItem = new Item(formValue['itemLabel'], categoryNewItem, formValue['itemStatus'])
     console.log('newItem : ', newItem)
   }
 
