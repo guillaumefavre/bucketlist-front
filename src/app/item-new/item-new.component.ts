@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Category } from '../model/category';
 import { Item } from '../model/item';
 import { CategoryService } from '../services/category.service';
+import { ItemService } from '../services/item.service';
 
 @Component({
   selector: 'app-item-new',
@@ -16,9 +17,11 @@ export class ItemNewComponent implements OnInit {
 
   categorySubscription: Subscription;
 
+  itemSubscription: Subscription;
+
   newItemForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private categoryService: CategoryService) { }
+  constructor(private formBuilder: FormBuilder, private categoryService: CategoryService, private itemService: ItemService) { }
 
 
   ngOnInit(): void {
@@ -34,14 +37,22 @@ export class ItemNewComponent implements OnInit {
       itemCategory: '',
       itemStatus: ''
     });
-
   }
 
   onSubmitForm() {
-    const formValue = this.newItemForm.value;
-    const categoryNewItem = this.categoryList.find(categ => categ.id == formValue['itemCategory'])
-    const newItem = new Item(formValue['itemLabel'], categoryNewItem, formValue['itemStatus'])
+    let formValue = this.newItemForm.value;
+    let categoryNewItem = this.categoryList.find(categ => categ.id == formValue['itemCategory'])
+    let newItem = new Item(formValue['itemLabel'], categoryNewItem, formValue['itemStatus'])
     console.log('newItem : ', newItem)
+    this.itemSubscription = this.itemService.createItem(newItem).subscribe();
+    // TODO : faire en sorte que les catégories soient triées sans rafraichir
+  }
+
+  ngOnDestroy() {
+    this.categorySubscription.unsubscribe();
+    if(this.itemSubscription) {
+      this.itemSubscription.unsubscribe();
+    }
   }
 
 }

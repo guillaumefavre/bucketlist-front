@@ -9,6 +9,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class ItemService {
 
+  // TODO : ne pas mettre l'URL en dur
   private itemsUrl = 'http://localhost:8090/bucketlist/1/items';
 
   items: Item[] = [];
@@ -24,6 +25,16 @@ export class ItemService {
           this.items = data;
           this.emitItems();
         }),
+      catchError(this.handleError)
+    );
+  }
+
+  createItem(item: Item): Observable<Item> {
+    return this.httpClient.post<Item>(this.itemsUrl, item).pipe(
+      tap(data => {
+        this.items.push(data);
+        this.emitItems();
+      }),
       catchError(this.handleError)
     );
   }
