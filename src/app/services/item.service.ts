@@ -18,10 +18,8 @@ export class ItemService {
   constructor(private httpClient: HttpClient) { }
 
   getItems(): Observable<Item[]> {
-    console.log('getItems');
     return this.httpClient.get<Item[]>(this.itemsUrl).pipe(
       tap(data => {
-          console.log('Data : '+JSON.stringify(data));
           this.items = data;
           this.emitItems();
         }),

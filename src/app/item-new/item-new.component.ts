@@ -27,7 +27,6 @@ export class ItemNewComponent implements OnInit {
   ngOnInit(): void {
     this.categorySubscription = this.categoryService.getCategories().subscribe(
       categories => {
-        console.log('réponse categories : ' +categories);
         this.categoryList = categories;
       }
     );

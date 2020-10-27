@@ -18,10 +18,8 @@ export class CategoryService {
 
 
   getCategories(): Observable<Category[]> {
-    console.log('getCategories');
     return this.httpClient.get<Category[]>(this.categoryUrl).pipe(
       tap(data => {
-          console.log('Data : '+JSON.stringify(data));
           this.categories = data;
           this.emitCategories();
         }),
