@@ -40,7 +40,12 @@ export class ItemService {
   }
 
   emitItems() {
-    this.itemSubject.next(this.items);
+    this.itemSubject.next(
+      // Tri des items par catégorie
+      this.items.sort(function (a, b) {
+        return a.category.id - b.category.id;
+      })
+    );
   }
 
   private handleError(err: HttpErrorResponse) {

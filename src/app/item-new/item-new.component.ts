@@ -43,9 +43,7 @@ export class ItemNewComponent implements OnInit {
     let formValue = this.newItemForm.value;
     let categoryNewItem = this.categoryList.find(categ => categ.id == formValue['itemCategory'])
     let newItem = new Item(formValue['itemLabel'], categoryNewItem, formValue['itemStatus'])
-    console.log('newItem : ', newItem)
     this.itemSubscription = this.itemService.createItem(newItem).subscribe();
-    // TODO : faire en sorte que les catégories soient triées sans rafraichir
   }
 
   ngOnDestroy() {

@@ -23,12 +23,7 @@ export class BucketListComponent implements OnInit {
 
     this.itemSubscription = this.itemService.getItems().subscribe(
       items => {
-        console.log('items : ', items)
-
-        this.itemsList = items.sort(function (a, b) {
-          return a.category.id - b.category.id;
-        });
-
+        this.itemsList = items;
       }
     );
   }
