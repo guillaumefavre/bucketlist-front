@@ -11,6 +11,7 @@ import { CategoryNewComponent } from './category/category-new/category-new.compo
 import { BucketListComponent } from './bucket-list/bucket-list.component';
 import { ItemComponent } from './item/item.component';
 import { ItemNewComponent } from './item-new/item-new.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ItemNewComponent } from './item-new/item-new.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    NgbModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

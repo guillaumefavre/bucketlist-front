@@ -1,3 +1,16 @@
 <div [ngClass]="{'list-group-item': true}">
-    <h4>{{ item.label }}</h4>
+    <div class="row">
+        <h4  class="col-8">{{ item.label }}</h4>
+        <div  class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="item.status">
+            <label ngbButtonLabel class="btn-primary">
+              <input ngbButton type="radio" value="TODO">A faire
+            </label>
+            <label ngbButtonLabel class="btn-primary">
+                <input ngbButton type="radio" value="DOING">En cours
+              </label>
+              <label ngbButtonLabel class="btn-primary">
+                <input ngbButton type="radio" value="DONE">Fait
+              </label>
+        </div>
+    </div>
 </div>
