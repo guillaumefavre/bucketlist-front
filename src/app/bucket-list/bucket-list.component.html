@@ -1,11 +1,15 @@
-<div class="container">
-	<div class="col-xs-12">
-        <div *ngFor="let item of itemsList">
-            <h2 *ngIf="isNewCategory(item.category.id)">{{ item.category.label }}</h2>
-            <app-item [item]="item"></app-item>
+<div class="container col-9">
+    <div class="row">
+        <div class="col-12">
+            <div *ngFor="let item of itemsList">
+                <h2 *ngIf="isNewCategory(item.category.id)">{{ item.category.label }}</h2>
+                <app-item [item]="item"></app-item>
+            </div>
         </div>
-        <div>
+    </div>
+    <div class="row mt-5 justify-content-md-center">
+        <div class="row justify-content-md-center">
             <app-item-new></app-item-new>
         </div>
-	</div>
+    </div>
 </div>

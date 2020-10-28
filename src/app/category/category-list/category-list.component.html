@@ -1,9 +1,14 @@
-<div class="container">
-	<div class="col-xs-12">
-		<h1>Liste de catégories :</h1>
+<div class="container col-9">
+	<div class="row">
+		<div class="col-12">
 			<app-category-detail *ngFor="let category of categoryList" 
 				[categoryDetail]="category">
 			</app-category-detail>
+		</div>
+	</div>
+	<div class="row mt-5 justify-content-md-center">
+		<div class="col-6 text-center">
 			<app-category-new></app-category-new>
+		</div>
 	</div>
 </div>

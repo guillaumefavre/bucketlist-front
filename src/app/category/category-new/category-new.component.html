@@ -1,10 +1,9 @@
-<div class="container">
-    <div class="col-xs-12">
-        new category !
+<div class="container text-center">
+    <div>
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
             <input type="text" id="label" class="form-control" name="label" ngModel required>
 
-            <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Enregistrer</button>
+            <button class="btn btn-primary mt-3" type="submit" [disabled]="f.invalid">Ajouter une catégorie</button>
         </form>
     </div>
 </div>

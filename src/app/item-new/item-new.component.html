@@ -1,17 +1,24 @@
-<div class="container">
+<div class="container text-center">
     <div class="col-xs-12">
         <form [formGroup]="newItemForm" (ngSubmit)="onSubmitForm()">
-            <div class="form-group">
+            <div class="form-group text-left">
+                <label for="itemLabel">Libellé</label>
                 <input type="text" id="itemLabel" class="form-control" formControlName="itemLabel">
             </div>
-            <select id="itemCategory" class="form-control" formControlName="itemCategory">
-                <option *ngFor="let category of categoryList"  value="{{ category.id }}">{{ category.label }}</option>
-              </select>
-            <select id="itemStatus" class="form-control" formControlName="itemStatus">
-                <option value="TODO">TODO</option>
-                <option value="DOING">DOING</option>
-                <option value="DONE">DONE</option>
-              </select>
+            <div class="form-group text-left">
+                <label for="itemCategory">Catégorie</label>
+                <select id="itemCategory" class="form-control mt-2" formControlName="itemCategory">
+                    <option *ngFor="let category of categoryList"  value="{{ category.id }}">{{ category.label }}</option>
+                </select>
+            </div>
+            <div class="form-group text-left">
+                <label for="itemStatus">Statut</label>
+                <select id="itemStatus" class="form-control mt-2" formControlName="itemStatus">
+                    <option value="TODO">TODO</option>
+                    <option value="DOING">DOING</option>
+                    <option value="DONE">DONE</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Ajouter un item</button>
         </form>
     </div>
