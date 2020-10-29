@@ -28,8 +28,10 @@ export class ItemComponent implements OnInit {
   }
 
   openItemDialog() {
-    console.group('openItemDialog')
-    this.dialog.open(ItemDialogComponent);
+    console.group('openItemDialog : ', this.item.label)
+    this.dialog.open(ItemDialogComponent, {
+      data: this.item
+    });
   }
 
   ngOnDestroy() {
