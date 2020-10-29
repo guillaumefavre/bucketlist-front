@@ -39,9 +39,9 @@ export class ItemService {
 
   modifyItem(modifiedItem: Item): Observable<Item> {
     let itemUrl = this.itemsUrl + '/' +modifiedItem.id;
-    console.log('itemUrl : ', itemUrl)
     return this.httpClient.put<Item>(itemUrl, modifiedItem).pipe(
       tap(data => {
+        console.log('Modification OK')
         // Chercher le bon item
         //let itemInTab = this.items.find(x => x.id === modifiedItem.id)
         //let index = this.items.indexOf(itemInTab)

@@ -12,6 +12,9 @@ import { BucketListComponent } from './bucket-list/bucket-list.component';
 import { ItemComponent } from './item/item.component';
 import { ItemNewComponent } from './item-new/item-new.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ItemDialogComponent } from './item-dialog/item-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CategoryNewComponent,
     BucketListComponent,
     ItemComponent,
-    ItemNewComponent
+    ItemNewComponent,
+    ItemDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule 
+    NgbModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

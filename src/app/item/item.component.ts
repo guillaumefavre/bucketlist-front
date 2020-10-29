@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ItemDialogComponent } from '../item-dialog/item-dialog.component';
 import { Item } from '../model/item';
 import { ItemService } from '../services/item.service';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-item',
@@ -15,15 +17,19 @@ export class ItemComponent implements OnInit {
 
   itemSubscription: Subscription;
 
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   changeItemStatus(newStatus: string) {
     this.item.status = newStatus,
-    console.log('changeItemStatus : ', newStatus, this.item)
     this.itemSubscription = this.itemService.modifyItem(this.item).subscribe();
+  }
+
+  openItemDialog() {
+    console.group('openItemDialog')
+    this.dialog.open(ItemDialogComponent);
   }
 
   ngOnDestroy() {

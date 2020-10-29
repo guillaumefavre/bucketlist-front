@@ -1,5 +1,5 @@
 <div [ngClass]="{'list-group-item': true}">
-    <div class="row">
+    <div class="row" (click)="openItemDialog()">
         <h4  class="col-8">{{ item.label }}</h4>
         <div  class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="item.status">
             <label ngbButtonLabel class="btn-primary">
