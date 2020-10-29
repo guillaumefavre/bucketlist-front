@@ -3,13 +3,13 @@
         <h4  class="col-8">{{ item.label }}</h4>
         <div  class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="item.status">
             <label ngbButtonLabel class="btn-primary">
-              <input ngbButton type="radio" value="TODO">A faire
+              <input ngbButton type="radio" value="TODO" (click)="changeItemStatus('TODO')">A faire
             </label>
             <label ngbButtonLabel class="btn-primary">
-                <input ngbButton type="radio" value="DOING">En cours
+                <input ngbButton type="radio" value="DOING" (click)="changeItemStatus('DOING')">En cours
               </label>
               <label ngbButtonLabel class="btn-primary">
-                <input ngbButton type="radio" value="DONE">Fait
+                <input ngbButton type="radio" value="DONE" (click)="changeItemStatus('DONE')">Fait
               </label>
         </div>
     </div>

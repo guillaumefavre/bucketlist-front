@@ -37,6 +37,22 @@ export class ItemService {
     );
   }
 
+  modifyItem(modifiedItem: Item): Observable<Item> {
+    let itemUrl = this.itemsUrl + '/' +modifiedItem.id;
+    console.log('itemUrl : ', itemUrl)
+    return this.httpClient.put<Item>(itemUrl, modifiedItem).pipe(
+      tap(data => {
+        // Chercher le bon item
+        //let itemInTab = this.items.find(x => x.id === modifiedItem.id)
+        //let index = this.items.indexOf(itemInTab)
+        //this.items[index] = modifiedItem;
+        this.emitItems();
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+
   emitItems() {
     this.itemSubject.next(
       // Tri des items par catégorie
