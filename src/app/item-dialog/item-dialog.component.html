@@ -1,2 +1,5 @@
-<h1>Détail de l'item n°{{ data.id }}</h1>
-{{ data.label }}
+<h1 mat-dialog-title>Détail de l'item n°{{ item.id }}</h1>
+<input matInput [(ngModel)]="item.label">
+<div mat-dialog-actions>
+  <button mat-button (click)="modifierItem()">Modifier</button>
+</div>

@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { ItemDialogComponent } from '../item-dialog/item-dialog.component';
 import { Item } from '../model/item';
 import { ItemService } from '../services/item.service';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-item',
@@ -29,8 +29,12 @@ export class ItemComponent implements OnInit {
 
   openItemDialog() {
     console.group('openItemDialog : ', this.item.label)
-    this.dialog.open(ItemDialogComponent, {
+    const dialogRef = this.dialog.open(ItemDialogComponent, {
       data: this.item
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Callback item modifié ', result);
     });
   }
 

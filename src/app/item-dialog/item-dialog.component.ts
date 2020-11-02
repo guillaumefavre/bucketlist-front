@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-item-dialog',
@@ -8,9 +8,16 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class ItemDialogComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data) { }
+  constructor(
+    private dialogRef: MatDialogRef<ItemDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public item) { }
 
   ngOnInit(): void {
+  }
+
+  modifierItem() {
+    console.log('modifierItem !!  ', this.item)
+    this.dialogRef.close({modifiedItem: this.item});
   }
 
 }
