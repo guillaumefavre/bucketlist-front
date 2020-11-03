@@ -34,7 +34,7 @@ export class ItemComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Callback item modifié ', result);
+      this.itemSubscription = this.itemService.modifyItem(result.modifiedItem).subscribe();
     });
   }
 
