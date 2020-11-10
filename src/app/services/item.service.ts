@@ -52,6 +52,21 @@ export class ItemService {
     );
   }
 
+  deleteItem(item: Item): Observable<Item> {
+    let itemUrl = this.itemsUrl + '/' +item.id;
+    return this.httpClient.delete<Item>(itemUrl).pipe(
+      tap(data => {
+        console.log('Suppression OK')
+        // Chercher le bon item
+        let itemInTab = this.items.find(x => x.id === item.id)
+        let index = this.items.indexOf(itemInTab)
+        this.items.splice(index, 1);
+        this.emitItems();
+      }),
+      catchError(this.handleError)
+    );
+  }
+
 
   emitItems() {
     this.itemSubject.next(

@@ -1,6 +1,6 @@
 <div [ngClass]="{'list-group-item': true}">
     <div class="row">
-        <div class="col-8 itemRow align-middle" (click)="openItemDialog()">
+        <div class="col-6 itemRow align-middle" (click)="openItemDialog()">
           {{ item.label }}
         </div>
         <div  class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="item.status">
@@ -13,6 +13,9 @@
               <label ngbButtonLabel class="btn-primary">
                 <input ngbButton type="radio" value="DONE" (click)="changeItemStatus('DONE')">Fait
               </label>
+        </div>
+        <div>
+          <button type="button" class="btn btn-danger" (click)="supprimerItem()">Supprimer</button>
         </div>
     </div>
 </div>

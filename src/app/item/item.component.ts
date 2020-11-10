@@ -27,6 +27,11 @@ export class ItemComponent implements OnInit {
     this.itemSubscription = this.itemService.modifyItem(this.item).subscribe();
   }
 
+  supprimerItem() {
+    console.log('item à supprimer : ', this.item)
+    this.itemSubscription = this.itemService.deleteItem(this.item).subscribe();
+  }
+
   openItemDialog() {
     console.group('openItemDialog : ', this.item.label)
     const dialogRef = this.dialog.open(ItemDialogComponent, {
